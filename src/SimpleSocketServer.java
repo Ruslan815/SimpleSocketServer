@@ -4,6 +4,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class SimpleSocketServer {
@@ -56,8 +58,10 @@ public class SimpleSocketServer {
         }
 
         private void writeResponse(String responseContent) throws Throwable {
+            SimpleDateFormat formatter= new SimpleDateFormat("dd-MM-yyyy 'at' HH:mm:ss z");
+            Date date = new Date(System.currentTimeMillis());
             String responseHeaders = "HTTP/1.1 200 OK\r\n" +
-                    "Date: " + new Date().getTime() + "\r\n" +
+                    "Date: " + formatter.format(date) + "\r\n" +
                     "Server: SimpleSocketServer_26.06.2021\r\n" +
                     "Content-Type: text/html; charset=utf-8\r\n" +
                     "Content-Length: " + responseContent.length() + "\r\n" +
