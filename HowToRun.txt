@@ -1,0 +1,1 @@
+To start the server, just go to the directory where the jar file is located and run it from the command line with the command: java -jar SimpleSocket.jar
